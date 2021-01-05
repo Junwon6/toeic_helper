@@ -11,7 +11,8 @@ class App extends Component {
 
         this.state = {
             page: 'test_list',
-            test: 'none'
+            test: 'none',
+            file_name: 'none'
         }
     }
 
@@ -25,21 +26,31 @@ class App extends Component {
     backPage = () => {
         this.setState({
             page: 'test_list',
-            test: 'none'
+            test: 'none',
+            file_name: 'none'
+        })
+    }
+
+    setResult = (file_name) => {
+        console.log(file_name)
+        this.setState({
+            page: 'result',
+            file_name: file_name
         })
     }
 
     render() {
-        const { page, test } = this.state;
-        const { selectTest, backPage } = this;
+        const { page, test, file_name } = this.state;
+        const { selectTest, backPage, setResult } = this;
 
         return (
             <div>
                 <h1>TOEIC</h1>
                 <div>
                     <MainContent
-                        page={page} test={test}
+                        page={page} test={test} file_name={file_name}
                         testClick={selectTest}
+                        setResult={setResult}
                         backClick={backPage}/>
                 </div>
             </div>

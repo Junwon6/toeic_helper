@@ -1,0 +1,20 @@
+.select_input {
+    width: 50px;
+}
+
+.p_wapper {
+    margin-bottom: 10px;
+}
+
+.paper_wapper {
+    height: 290px;
+    width: 100px;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+.paper_button {
+    width: 100px;
+    display: block;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,16 @@
+.r_wapper {
+    margin-bottom: 10px;
+}
+
+.result_wapper {
+    height: 290px;
+    width: 100px;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+.result_button {
+    width: 100px;
+    display: block;
+    margin-bottom: 10px;
+}

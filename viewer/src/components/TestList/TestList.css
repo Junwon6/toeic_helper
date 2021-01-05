@@ -1,0 +1,6 @@
+/* .test_list {
+
+} */
+.test_list:link { color: blue; }
+.test_list:visited { color: blue; }
+.test_list:hover { color: #b95994;}

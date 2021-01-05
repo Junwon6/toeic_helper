@@ -7,6 +7,12 @@ const start_num = 101;
 const num_p = 100;
 
 class Paper extends Component {
+    areYouSure = () => {
+        if (window.confirm("Are you sure?")) {
+            this.save();
+        } 
+    }
+
     save = () => {
         const temp = document.getElementsByName('answer')
         let answer_list = []
@@ -14,7 +20,7 @@ class Paper extends Component {
         for (var i = 0; i < temp.length; i++)
             answer_list.push(temp[i].value)
 
-        fetch('http://localhost:4000' + '/save_answer', {
+        fetch('http://localhost:4000/save_answer', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -25,6 +31,7 @@ class Paper extends Component {
             .then(res => res.json())
             .then(json => {
                 console.log(json)
+                this.props.setResult(json.file_name);
             })
     }
 
@@ -33,12 +40,12 @@ class Paper extends Component {
 
         return (
             <div>
-                <button onClick={this.props.backClick}>Back</button>
                 <h3>{this.props.test}</h3>
-                <div>
-                    {p_list.map(idx => <div key={"p_" + idx}>{idx} <Select id={"p_" + idx} /></div>)}
+                <div className="paper_wapper">
+                    {p_list.map(idx => <div key={"p_" + idx} className="p_wapper">{idx} <Select id={"p_" + idx} /></div>)}
                 </div>
-                <button onClick={this.save}>Submit</button>
+                <button onClick={this.areYouSure} className="paper_button">Submit</button>
+                <button onClick={this.props.backClick} className="paper_button">Back</button>
             </div>
         )
     }

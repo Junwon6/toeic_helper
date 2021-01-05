@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import './TestList.css';
 
 class TestList extends Component {
 
@@ -13,7 +14,7 @@ class TestList extends Component {
         ]
         return (
             <div>
-                {t_list.map(t => <li key={t}><a href="#!" onClick={this.props.onClick} id={t}>{t}</a></li>)}
+                {t_list.map(t => <h3 key={t}><a href="#!" className="test_list" onClick={this.props.onClick} id={t}>{t}</a></h3>)}
             </div>
         )
     }
