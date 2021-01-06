@@ -9,7 +9,7 @@ class Result extends Component {
     render() {
         const p_list = [...Array(num_p).keys()].map(num => num + start_num);
 
-        fetch('http://localhost:4000/get_result', {
+        fetch('http://168.188.126.207:8080/get_result', {
             method: 'post',
             headers: {
                 'Accept': 'application/json',

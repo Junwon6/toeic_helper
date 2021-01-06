@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Select(props) {
+const Select = (props) => {
     return (
-        <select name="answer" id={"answer_"+props.id}>
+        <select onChange={props.checkPart} name="answer" id={"answer_"+props.id}>
             <option value="-">-</option>
             <option value="A">A</option>
             <option value="B">B</option>
