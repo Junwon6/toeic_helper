@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Select from './Select'
+import Timer from './Timer'
 import './Paper.css';
 
 const start_num = 101;
@@ -51,16 +52,9 @@ class Paper extends Component {
             if (cnt === data.p_num.length) {
                 const temp = {}
                 temp[data.name.toLowerCase()] = true
-                this.setState(temp, this.checkTime)
+                this.setState(temp)
             }
         })
-        console.log(this.state)
-    }
-
-    checkTime = () => {
-        if (this.state['part5'] === true) console.log('part5 done!!');
-        if (this.state['part6'] === true) console.log('part6 done!!');
-        if (this.state['part7'] === true) console.log('part7 done!!');
     }
 
     save = () => {
@@ -90,6 +84,10 @@ class Paper extends Component {
         return (
             <div>
                 <h3>{this.props.test}</h3>
+                <Timer
+                    part5={this.state.part5}
+                    part6={this.state.part6}
+                    part7={this.state.part7} />
                 <div className="paper_wapper">
                     {p_list.map(idx => <div key={"p_" + idx} className="p_wapper">{idx} <Select checkPart={this.checkPart} id={"p_" + this.setPart(idx) + "_" + idx} /></div>)}
                 </div>
