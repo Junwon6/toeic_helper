@@ -1,11 +1,12 @@
 # toeic_helper
 
-### function
-#### Select the test
-![select_test](./demo/select_test.gif)
+![book_cover](./doc/book_cover.jpg)
 
-#### Check time per part
-![time_check](./demo/time_check.gif)
+### Select the test
+![select_test](./doc/demo/select_test.gif)
 
-#### Show the result
-![get_result](./demo/get_result.gif)
+### Check time per part
+![time_check](./doc/demo/time_check.gif)
+
+### Show the result
+![get_result](./doc/demo/get_result.gif)
