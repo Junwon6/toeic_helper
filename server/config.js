@@ -7,6 +7,6 @@ var dbconfig = {
 }
 
 module.exports = {
-    SERVER_PORT : 4000,
+    SERVER_PORT : 8080,
     DB_CONFIG : dbconfig
 }

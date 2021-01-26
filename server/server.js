@@ -57,12 +57,17 @@ app.post('/get_result', (req, res) => {
                 .on('data', (data) => result_2.push(data))
                 .on('end', () => {
                     for (var i = 0; i < 100; i++) {
-                        result.push({ user: result_1[i].Answer, answer: result_2[i].Answer })
+                        result.push({ 
+                            user: result_1[i].Answer, 
+                            answer: result_2[i].Answer,
+                            correct: (result_1[i].Answer === result_2[i].Answer) ? 'O':'X'
+                        })
                     }
                     res.send({ message: "ok", result: result });
                 });
         });
 })
+
 
 // app.post('/save', (req, res) => {
 //     var data = {

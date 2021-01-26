@@ -33,7 +33,7 @@ const timeFormat = (time) => {
 }
 
 const Timer = (props) => {
-    let [count, setCount] = useState(3768);
+    let [count, setCount] = useState(0);
     let [part5, setPart5] = useState({status: false, time: 0}); 
     let [part6, setPart6] = useState({status: false, time: 0}); 
     let [part7, setPart7] = useState({status: false, time: 0}); 
@@ -55,10 +55,26 @@ const Timer = (props) => {
 
     return (
         <div className="timer" style={{marginBottom: '10px'}}>
-            {timeFormat(count)}<br/>
-            part5: {timeFormat(part5.time)}<br/>
-            part6: {timeFormat(part6.time)}<br/>
-            part7: {timeFormat(part7.time)}<br/>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>time</td>
+                        <td>{timeFormat(count)}</td>
+                    </tr>
+                    <tr>
+                        <td>part5</td>
+                        <td>{timeFormat(part5.time)}</td>
+                    </tr>
+                    <tr>
+                        <td>part6</td>
+                        <td>{timeFormat(part6.time)}</td>
+                    </tr>
+                    <tr>
+                        <td>part7</td>
+                        <td>{timeFormat(part7.time)}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     );
 }

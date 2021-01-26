@@ -10,11 +10,11 @@ const p_list = [...Array(num_p).keys()].map(num => num + start_num);
 
 //101 ~ 130 : 30
 //131 ~ 146 : 16
-//147 ~ 180 : 34
+//147 ~ 180 : 54
 const part = [
     { name: 'PART5', p_num: [...Array(30).keys()].map(num => num + 101) },
     { name: 'PART6', p_num: [...Array(16).keys()].map(num => num + 131) },
-    { name: 'PART7', p_num: [...Array(34).keys()].map(num => num + 147) },
+    { name: 'PART7', p_num: [...Array(54).keys()].map(num => num + 147) },
 ]
 
 class Paper extends Component {
@@ -73,9 +73,19 @@ class Paper extends Component {
             body: JSON.stringify({ answer_list: answer_list, title: this.props.test })
         })
             .then(res => res.json())
-            .then(json => {
-                console.log(json)
-                this.props.setResult(json.file_name)
+            .then(json1 => {
+                fetch('http://168.188.126.207:8080/get_result', {
+                    method: 'post',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ file_name: json1.file_name })
+                })
+                    .then(res => res.json())
+                    .then(json2 => {
+                        this.props.setResult(json1.file_name, json2.result);
+                    })
             })
     }
 
@@ -89,9 +99,15 @@ class Paper extends Component {
                     part6={this.state.part6}
                     part7={this.state.part7} />
                 <div className="paper_wapper">
-                    {p_list.map(idx => <div key={"p_" + idx} className="p_wapper">{idx} <Select checkPart={this.checkPart} id={"p_" + this.setPart(idx) + "_" + idx} /></div>)}
+                    <table>
+                        <tbody>
+                            {p_list.map(idx => <tr key={"p_" + idx} className="p_wapper">
+                                <td>{idx}</td>
+                                <td><Select checkPart={this.checkPart} id={"p_" + this.setPart(idx) + "_" + idx} /></td></tr>)}
+                        </tbody>
+                    </table>
                 </div>
-                <button onClick={this.checkPart} className="paper_button">Submit</button>
+                <button onClick={this.save} className="paper_button">Submit</button>
                 <button onClick={this.props.backClick} className="paper_button">Back</button>
             </div>
         )
